@@ -1,17 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #register {
+      font-size: 24px;
+      color: rgb(120, 90, 255);
+      font-weight: 800;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: lightgray;
+      border: 1px solid black;
+      padding-left: 10px;
+    }
+    @font-face {
+      font-family: 'Kanit';
+      src: url('fonts/Kanit-Regular.ttf') format('truetype');
+    }
+    body {
+      font-family: 'Kanit', sans-serif;
+    }
+  </style>
+</head>
 <body>
+  <!-- ส่วนที่แสดงออกไปในหน้า Browser -->
 
-<h2>TOOD DUM</h2>
+  <!-- form -->
+   <div id="register">Register Form</div> 
+   ชื่อ <input class="form" type="text">
+   นามสกุล <input class="form" type="text"> <br>
+   อายุ <input class="form" type="number"> <br>
+   เพศ <input type="radio" name="gender" value="male"> ชาย
+         <input type="radio" name="gender" value="female"> หญิง
 
-<p>The submit button sends the form data to the server, and the reset button clears the form field (try to type your first name and press Reset Form).</p>
+   งานอดิเรก <br>
+   <input type="checkbox" name="hobby" value="reading"> อ่านหนังสือ <br>
+   <input type="checkbox" name="hobby" value="traveling"> ท่องเที่ยว <br>
+   <input type="checkbox" name="hobby" value="sports"> เล่นกีฬา <br>
 
-<form action="/action_page.php">
-  First name: <input type="text" name="fname"><br><br>
-
-  <button type="submit">Submit Form</button>
-  <button type="reset">Reset Form</button>
-</form>
-
+   อธิบายตัวเอง <br>
+   <textarea rows="4" cols="50"></textarea> <br>
+   <input type="submit" value="Submit">
 </body>
 </html>
