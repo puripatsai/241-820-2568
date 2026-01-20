@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM and Events</title>
+</head>
+<body>
+
+    <h3>งานอดิเรก</h3>
+    <input type="checkbox" name="hobby" value="reading"> Reading
+    <input type="checkbox" name="hobby" value="traveling"> Traveling
+    <input type="checkbox" name="hobby" value="gaming"> Gaming
+    <br><br>
+    <button onclick="showHobby()">แสดงงานอดิเรก</button>
+
+    <h3>เพศ</h3>
+    <input type="radio" name="gender" value="male" checked onchange="changeGender()"> Male
+    <input type="radio" name="gender" value="female" onchange="changeGender()"> Female
+
+    <script>
+    function showHobby() {
+        let checkboxInputs = document.querySelectorAll('input[name="hobby"]');
+        for (let i = 0; i < checkboxInputs.length; i++) {
+            if (checkboxInputs[i].checked) {
+                console.log(checkboxInputs[i].value);
+            }
+        }
+    }
+
+    function changeGender() {
+        let genderInputs = document.querySelectorAll('input[name="gender"]');
+        for (let i = 0; i < genderInputs.length; i++) {
+            if (genderInputs[i].checked) {
+                console.log(genderInputs[i].value);
+            }
+        }
+    }
+    </script>
+
+</body>
+</html>
