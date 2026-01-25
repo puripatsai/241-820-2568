@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM and Events</title>
 </head>
+
 <body>
 
     <h3>งานอดิเรก</h3>
@@ -38,9 +39,7 @@
     }
     </script>
 
-</body>
 
-<body>
 ชื่อ: <input type="text" name="fname" onkeydown="changeFname()"/>
     <script>
         //onkeydown event
@@ -52,12 +51,12 @@
             console.log(inputElement.value);
         }
     </script>
-</body>
 
-<body>
+
 <div 
 onmouseover="OverItem()"
-onmouseup="UpItem()"> Cick</div>
+onmouseup="UpItem()"
+onmousedown="DownItem()"> Cick</div>
     <script>
         function OverItem() {
             console.log("Mouse over detected");
@@ -69,21 +68,17 @@ onmouseup="UpItem()"> Cick</div>
             console.log("Mouse down detected");
         }
     </script>
-</body>
 
-<body>
-<div id="hi">Hi <span style="display: none;">A</span></div>
+
+<div id="hi"></div>
     <script >
         let hiDom = document.getElementById("hi");
-        hiDom.innerHTML = "Hi<b>B</b> ";
+        // ไม่แสดงอะไรบนหน้าเว็บ
 
-        console.log(hiDom.textContent);
-        console.log(hiDom.innerText);
-        console.log(hiDom.innerHTML);
+        console.log("Hi B");   // แสดงทั้ง Hi และ B ใน console เท่านั้น
     </script>
-</body>
 
-<body>
+
     <h1>งานอดิเรก</h1>
     <div id="content"></div>
 
@@ -117,5 +112,6 @@ onmouseup="UpItem()"> Cick</div>
             contentDiv.innerHTML = contentHTML;
             }
     </script>
+
 </body>
 </html>
