@@ -39,4 +39,83 @@
     </script>
 
 </body>
+
+<body>
+ชื่อ: <input type="text" name="fname" onkeydown="changeFname()"/>
+    <script>
+        //onkeydown event
+        function changeFname() {
+            console.log("Key down event detected");
+            //เลือก input element
+            let inputElement = document.querySelector('input[name="fname"]');
+            //ดึงค่า value
+            console.log(inputElement.value);
+        }
+    </script>
+</body>
+
+<body>
+<div 
+onmouseover="OverItem()"
+onmouseup="UpItem()"> Cick</div>
+    <script>
+        function OverItem() {
+            console.log("Mouse over detected");
+        }
+        function UpItem() {
+            console.log("Mouse up detected");
+        }
+        function DownItem() {
+            console.log("Mouse down detected");
+        }
+    </script>
+</body>
+
+<body>
+<div id="hi">Hi <span style="display: none;">A</span></div>
+    <script >
+        let hiDom = document.getElementById("hi");
+        hiDom.innerHTML = "Hi<b>B</b> ";
+
+        console.log(hiDom.textContent);
+        console.log(hiDom.innerText);
+        console.log(hiDom.innerHTML);
+    </script>
+</body>
+
+<body>
+    <h1>งานอดิเรก</h1>
+    <div id="content"></div>
+
+    <ul>
+        <li>อ่านหนังสือ</li>
+        <li>ว่ายน้ำ</li>
+        <li>เล่นเกม</li>
+    </ul>
+
+    <input type="checkbox" name="hobby" value="reading"> อ่านหนังสือ
+    <input type="checkbox" name="hobby" value="swimming"> ว่ายน้ำ
+    <input type="checkbox" name="hobby" value="gaming"> เล่นเกม
+    <button onclick="submitHobby()">Submit</button>
+
+    <script>
+        function submitHobby(){
+            //เลือก ไป checkbox ที่มี name เป็น hobby ทั้งหมด
+            let hobbies = document.querySelectorAll('input[name="hobby"]');
+            let contentHTML = '<ul>';
+            //เอาค่าที่เลือก ออกมา
+            for(let i=0; i<hobbies.length; i++){
+                if(hobbies[i].checked){
+                    contentHTML += '<li>' + hobbies[i].value + '</li>';
+                }
+            }
+            // วนค่าที่เลือก มาแสดงในรูปแบบ ul li ใส่ html
+            contentHTML += '</ul>';
+
+            //ใส่ html ลงใน div id content
+            let contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = contentHTML;
+            }
+    </script>
+</body>
 </html>
