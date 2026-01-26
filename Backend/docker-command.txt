@@ -1,0 +1,32 @@
+// show all containers (default show just running)
+docker ps --all
+
+// show just running containers
+docker ps
+
+// stop containers
+docker pull <image_name>
+
+// create a containers from an image
+docker create <image_name>
+
+// start a containers
+docker start <containers_id>
+
+// remove a containers
+docker rm <containers_id>
+
+// remove all containers
+docker system prune
+
+// Pull an image from a registry
+docker pull <image_name>
+
+//cat file  inside containers
+cat filename.txt
+
+foreground mode
+docker run -p 9000:80 nginx
+
+//deteched mode
+docker run -d -p 9100:80 nginx
