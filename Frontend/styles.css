@@ -80,6 +80,26 @@ input:focus, textarea:focus {
     transition: 0.2s;
 }
 
+.message {
+    background-color: #2d3436;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.message.success {
+    background-color: #45ff64;
+    color:#eee;
+    display: block;
+}
+
+.message.danger {
+    background-color: #ea6666;
+    color: #eee;
+    display: block;
+}
+
 .button {
     background: var(--primary-gradient);
     color: white;

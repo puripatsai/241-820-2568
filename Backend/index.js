@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2/promise');
 const app = express();
+const cors = require('cors');
 const port = 8000;
 
 app.use(bodyParser.json());
+app.use(cors());
 
 let users = []
 let counter = 1;
@@ -29,16 +31,31 @@ app.get('/users', async (req, res) => {
 //path = POST /users สำหรับเพิ่ม user ใหม่
 app.post('/users', async (req, res) => {
     try {
-        let user = req.body;
-        const results = await conn.query('INSERT INTO users SET ?', user)
+        const { firstName, lastName, age, gender, interests, description } = req.body;
+
+        const [result] = await conn.query(
+            `INSERT INTO users 
+            (firstname, lastname, age, gender, interests, description)
+            VALUES (?, ?, ?, ?, ?, ?)`,
+            [
+                firstName,
+                lastName,
+                age,
+                gender,
+                interests,
+                description || ''   // กันค่าว่าง
+            ]
+        );
+
         res.json({
             message: 'User created successfully',
-            data: results[0]
-        })
+            insertId: result.insertId
+        });
+
     } catch (error) {
-        console.error('Error creating user:', error);
+        console.error("DB ERROR:", error);
         res.status(500).json({
-            message: 'Error creating user',
+            message: 'Database error',
             error: error.message
         });
     }
