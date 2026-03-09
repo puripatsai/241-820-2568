@@ -28,10 +28,41 @@ app.get('/users', async (req, res) => {
     res.json(results[0]);
 });
 
+const validateData = (userData) => {
+    let errors = [];
+    if (!userData.firstName) {
+        errors.push('กรุณากรอกชื่อ');
+    }
+    if (!userData.lastName) {
+        errors.push('กรุณากรอกนามสกุล');
+    }
+    if (!userData.age) {
+        errors.push('กรุณากรอกอายุ');
+    }
+    if (!userData.gender) {
+        errors.push('กรุณาเลือกเพศ');
+    }
+    if (!userData.interests) {
+        errors.push('กรุณาเลือกงานอดิเรก');
+    }
+    if (!userData.description) {
+        errors.push('กรุณากรอกคำอธิบาย');
+    }
+    return errors;
+}
+
 //path = POST /users สำหรับเพิ่ม user ใหม่
 app.post('/users', async (req, res) => {
     try {
         const { firstName, lastName, age, gender, interests, description } = req.body;
+        const errors = validateData(user);
+        if (errors.lemght > 0) {
+            throw {
+                message: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                errors: errors
+            }
+        }
+
 
         const [result] = await conn.query(
             `INSERT INTO users 
@@ -53,7 +84,9 @@ app.post('/users', async (req, res) => {
         });
 
     } catch (error) {
-        console.error("DB ERROR:", error);
+        const errorMessage = error.message || 'Error creating user';
+        const errors = error.errors || [];
+        console.error("Error creating user", error.message);
         res.status(500).json({
             message: 'Database error',
             error: error.message
