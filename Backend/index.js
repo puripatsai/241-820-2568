@@ -78,7 +78,7 @@ app.post('/users', async (req, res) => {
     }
 });
 
-// path GET /users/:id สำหรับด get ข้อมูล user ที่มี id ตรงกับที่ส่งมา
+// path GET /users/:id สำหรับด get ข้อมูล user ที่มี id ตรงกับที่ส่ง
 app.get('/users/:id', async (req, res) => {
     try {
         let id = req.params.id
@@ -124,7 +124,7 @@ app.put('/users/:id', async (req, res) => {
     }
 })
 
-// DELETE /users/:id สำหรับลบ user ที่มี id ตรงกับที่ส่งมา
+// DELETE /users/:id สำหรับลบ user ที่มี id ตรงกับที่ส่ง
 app.delete('/users/:id', async (req, res) => {
     try {
         let id = req.params.id
