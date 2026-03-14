@@ -55,14 +55,13 @@ const validateData = (userData) => {
 app.post('/users', async (req, res) => {
     try {
         const { firstName, lastName, age, gender, interests, description } = req.body;
-        const errors = validateData(user);
-        if (errors.lemght > 0) {
+        const errors = validateData(req.body);
+        if (errors.length > 0) {
             throw {
                 message: 'กรุณากรอกข้อมูลให้ครบถ้วน',
                 errors: errors
             }
         }
-
 
         const [result] = await conn.query(
             `INSERT INTO users 
@@ -74,7 +73,7 @@ app.post('/users', async (req, res) => {
                 age,
                 gender,
                 interests,
-                description || ''   // กันค่าว่าง
+                description || ''
             ]
         );
 
@@ -88,8 +87,8 @@ app.post('/users', async (req, res) => {
         const errors = error.errors || [];
         console.error("Error creating user", error.message);
         res.status(500).json({
-            message: 'Database error',
-            error: error.message
+            message: errorMessage, 
+            errors: errors 
         });
     }
 });
@@ -113,8 +112,6 @@ app.get('/users/:id', async (req, res) => {
         });
     }
 })
-
-
 
 //PUT /users/:id สำหรับแก้ไข user ที่มี id ตรงกับที่ส่งมา
 app.put('/users/:id', async (req, res) => {
